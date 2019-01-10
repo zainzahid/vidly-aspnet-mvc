@@ -1,0 +1,41 @@
+﻿@model IList<Vidly.Models.Movie> 
+@{
+	ViewBag.Title = "Index";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br>
+<button class="btn btn-primary" onclick="location.href='/Movie/Add'" type="button">Add Movie</button>
+<br><br>
+
+
+	<table id="movieTable" class="table table-bordered">
+		<thead>
+			<tr>
+				<th scope="col">Movies</th>
+				<th scope="col">Genre</th>
+				<th scope="col">Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach (var movie in Model)
+			{
+				<tr>
+					<td><a href="/Movie/Edit/@movie.Id">@movie.Name</a></td>
+					<td>@movie.Genre.Name</td>
+					<td><button class="btn btn-primary deleteMovieBtn" onclick="location.href='/Movie/Delete/@movie.Id'">Delete</button></td>
+				</tr>
+			}
+		</tbody>
+	</table>
+
+
+
+
+@section scripts{
+	<script type="text/javascript">
+		$(document).ready(function () {
+
+			$("#movieTable").DataTable();
+		})
+	</script>
+}

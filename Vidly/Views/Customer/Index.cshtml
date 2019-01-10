@@ -1,0 +1,36 @@
+﻿@model IList<Vidly.Models.Customer>
+@{
+	ViewBag.Title = "Index";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br>
+<button class="btn btn-primary" onclick="location.href='/Customer/Add'" type="button">Add Customer</button>
+<br><br>
+<table id="customerTable" class="table table-bordered">
+	<thead>
+		<tr>
+			<th scope="col"> Customers </th>
+			<th scope="col"> Membership Type </th>
+			<th scope="col"> Actions </th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var customer in Model)
+		{
+			<tr>
+				<td><a href="/Customer/Edit/@customer.Id">@customer.Name</a> </td>
+				<td> @customer.MembershipType.MembershipTypeName </td>
+				<td><button class="btn btn-primary deleteMovieBtn" onclick="location.href='/Customer/Delete/@customer.Id'">Delete</button></td>
+			</tr>
+		}
+	</tbody>
+</table>
+
+@section scripts{
+	<script type="text/javascript">
+		$(document).ready(function () {
+
+			$("#customerTable").DataTable();
+		})
+	</script>
+}
