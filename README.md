@@ -1,6 +1,6 @@
 # Vidly
 
-Vidly is a Video Rental Application which allow its Members to record rentals for available movies its customers.
+Vidly is a Video Rental Application which allow its Members to record rentals of available movies for customers.
 
 ## Description
 
